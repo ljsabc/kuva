@@ -324,7 +324,10 @@ void Graph::prepare_graph()
 		if (IS_ODD(a_for_first))
 		{
 			a_for_first = (arc_forward *) (((char *)a_for_first) + 1);
-			a_for_last = (arc_forward *) ((a_for_first ++) -> shift);
+			//a_for_last = (arc_forward *) ((a_for_first ++) -> shift);
+            char* p = (((char *)(i -> first_out)) );
+            a_for_last = (arc_forward *)((uintptr_t)( (((arc_forward*)(p)) -> shift)) >> 8 );
+            a_for_first ++;
 		}
 		else a_for_last = (i + 1) -> first_out;
 

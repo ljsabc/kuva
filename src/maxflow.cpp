@@ -302,8 +302,12 @@ void Graph::process_source_orphan(node *i)
 	a0_rev_first = i -> first_in;
 	if (IS_ODD(a0_rev_first))
 	{
-		a0_rev_first = (arc_reverse *) (((char *)a0_rev_first) + 1);
-		a0_rev_last  = (arc_reverse *) ((a0_rev_first ++) -> sister);
+		//a0_rev_first = (arc_reverse *) (((char *)a0_rev_first) + 1);
+		//a0_rev_last  = (arc_reverse *) ((a0_rev_first ++) -> sister);
+        a0_rev_first = (arc_reverse *) (((char *)a0_rev_first) + 1);
+        char* q = (((char *)(i -> first_in)));
+		a0_rev_last = (arc_reverse *)((uintptr_t)( (((arc_reverse*)(q)) -> sister)) >> 8 );
+        a0_rev_first++;
 	}
 	else a0_rev_last = (i + 1) -> first_in;
 
@@ -688,7 +692,9 @@ Graph::flowtype Graph::maxflow()
 		if (IS_ODD(a_rev_first))
 		{
 			a_rev_first = (arc_reverse *) (((char *)a_rev_first) + 1);
-			a_rev_last = (arc_reverse *) ((a_rev_first ++) -> sister);
+            char* p = (((char *)(i -> first_in)) );
+			a_rev_last = (arc_reverse *)((uintptr_t)( (((arc_reverse*)(p)) -> sister)) >> 8 );
+            a_rev_first ++;
 		}
 		else a_rev_last = (i + 1) -> first_in;
 
