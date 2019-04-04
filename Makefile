@@ -44,7 +44,7 @@ BIN    = kuva
 OPATH  = src
 VPATH  = src
 INSTALL_PATH = /usr/bin
-TRASH  = *~ *.bmp *.jpg *.png temp *.sha256  a.out $(BIN) $(VPATH)/*.o $(VPATH)/*~ 
+TRASH  = *~ temp *.sha256  a.out $(BIN) $(VPATH)/*.o $(VPATH)/*~ 
 
 all:		$(BIN)
 

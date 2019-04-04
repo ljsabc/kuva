@@ -111,14 +111,14 @@ void Graph::add_edge(node_id from, node_id to, captype cap, captype rev_cap)
 	a_rev = arc_rev_block_first -> current ++;
 
 	a_rev -> sister = (arc_forward *) from;
-	a_for -> shift  = (intptr_t)to;
+	a_for -> shift  = (uintptr_t)to;
 	a_for -> r_cap = cap;
 	a_for -> r_rev_cap = rev_cap;
 
 	((node *)from) -> first_out =
-		(arc_forward *) ((intptr_t)(((node *)from) -> first_out) + 1);
+		(arc_forward *) ((uintptr_t)(((node *)from) -> first_out) + 1);
 	((node *)to) -> first_in =
-		(arc_reverse *) ((intptr_t)(((node *)to) -> first_in) + 1);
+		(arc_reverse *) ((uintptr_t)(((node *)to) -> first_in) + 1);
 }
 
 void Graph::set_tweights(node_id i, captype cap_source, captype cap_sink)
@@ -182,7 +182,7 @@ void Graph::prepare_graph()
 		for (i=&nb->nodes[0]; i<nb->current; i++)
 		{
 			/* outgoing arcs */
-			k = (intptr_t)(i -> first_out);
+			k = (uintptr_t)(i -> first_out);
 			if (a_for + k > &ab_for->arcs_for[ARC_BLOCK_SIZE])
 			{
 				if (k > ARC_BLOCK_SIZE) { if (error_function) (*error_function)("# of arcs per node exceeds block size!"); exit(1); }
@@ -215,7 +215,7 @@ void Graph::prepare_graph()
 			ab_for -> last_node = i;
 
 			/* incoming arcs */
-			k = (intptr_t)(i -> first_in);
+			k = (uintptr_t)(i -> first_in);
 			if (a_rev + k > &ab_rev->arcs_rev[ARC_BLOCK_SIZE])
 			{
 				if (k > ARC_BLOCK_SIZE) { if (error_function) (*error_function)("# of arcs per node exceeds block size!"); exit(1); }
@@ -305,7 +305,7 @@ void Graph::prepare_graph()
 		ab_for -> current -> shift     = a_for -> shift;
 		ab_for -> current -> r_cap     = a_for -> r_cap;
 		ab_for -> current -> r_rev_cap = a_for -> r_rev_cap;
-		a_for -> shift = (intptr_t) (ab_for -> current + 1);
+		a_for -> shift = (uintptr_t) (ab_for -> current + 1);
 		i -> first_out = (arc_forward *) (((char *)a_for) - 1);
 	}
 

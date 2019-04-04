@@ -108,7 +108,7 @@ int mkTexture( Args * args ) {
 
 		/* If stopping was pressed, wait until restart */
 
-		if ( args->getDispButton() != 0 ) {      
+		/*if ( args->getDispButton() != 0 ) {      
 
 			cout << "STOP!" << endl;
 
@@ -117,7 +117,7 @@ int mkTexture( Args * args ) {
 				doSleep( 1 ); 
 			}
 			cout << "GO!" << endl;      
-		}
+		}*/
 
 
 		/* Display status */
@@ -216,9 +216,9 @@ int main( int ac, char ** av ) {
 	/* build the texture */
 	mkTexture( args );
 
-	cout << "- Press a key and Enter to quit -" << endl;
+	//cout << "- Press a key and Enter to quit -" << endl;
 
-	cin >>  s;
+	//cin >>  s;
 
 	return 1;
 }

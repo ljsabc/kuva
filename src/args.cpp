@@ -517,8 +517,8 @@ void Args::getArgs( vector<string> vargs ) {
 void Args::refreshImageOut() {
 
 
-	disp_out->render( *img_out );
-	disp_out->resize( *disp_out );
+	//disp_out->render( *img_out );
+	//disp_out->resize( *disp_out );
 }
 
 void Args::dispImageIn( string title ) {
@@ -526,7 +526,7 @@ void Args::dispImageIn( string title ) {
 	Display input image (must be opened)  
 	*/
 	if ( p_width ) {
-		disp_in = new cimg_library::CImgDisplay( *img_in, title.c_str() );
+		//disp_in = new cimg_library::CImgDisplay( *img_in, title.c_str() );
 	}
 }
 
@@ -536,7 +536,7 @@ void Args::dispImageOut( string title ) {
 	Display output image (must be opened)
 	*/
 	if ( t_width ) {
-		disp_out = new cimg_library::CImgDisplay( *img_out, title.c_str() );
+		//disp_out = new cimg_library::CImgDisplay( *img_out, title.c_str() );
 	}
 }
 
@@ -570,7 +570,7 @@ void Args::dispImageErr( string title ) {
 		}
 
 		if ( t_width ) {
-			disp_err = new cimg_library::CImgDisplay( *img_err, title.c_str() );
+			//disp_err = new cimg_library::CImgDisplay( *img_err, title.c_str() );
 		}
 }
 

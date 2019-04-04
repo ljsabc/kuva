@@ -182,9 +182,9 @@ protected:
 
 	/* DISPLAYS */
 
-	cimg_library::CImgDisplay * disp_in;
-	cimg_library::CImgDisplay * disp_out;
-	cimg_library::CImgDisplay * disp_err;
+	//cimg_library::CImgDisplay * disp_in;
+	//cimg_library::CImgDisplay * disp_out;
+	//cimg_library::CImgDisplay * disp_err;
 
 	/* list of 256 first squares, to speed up placement cost computation */
 	int squares [256]; 
@@ -259,11 +259,11 @@ public:
 	void setPlacement( char p ) { placement = p; };
 	char getPlacement() { return placement; };
 
-	unsigned getDispKey() { return disp_out->key(); };
-	void setDispKey( unsigned k ) { disp_out->set_key(k); };
+	//unsigned getDispKey() { return disp_out->key(); };
+	//void setDispKey( unsigned k ) { disp_out->set_key(k); };
 
-	unsigned getDispButton() { return disp_out->button(); };
-	void setDispButton( unsigned k ) { disp_out->set_button(k); };
+	//unsigned getDispButton() { return disp_out->button(); };
+	//void setDispButton( unsigned k ) { disp_out->set_button(k); };
 
 	void resetPlacement() { placement = placement0; };
 
