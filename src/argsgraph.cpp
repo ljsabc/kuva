@@ -538,7 +538,7 @@ Graph::captype Args::graphCostBasic( uint_t * s, uint_t * t, vector< uint_t > of
    
     The returned value is the mean on each channel (RVB).
   */
-  uint_t cr, cv, cb, cost;
+  float cr, cv, cb, cost;
   uint_t xs = s[0] % t_width;
   uint_t ys = s[1] % t_height;
   uint_t xt = t[0] % t_width;
@@ -555,9 +555,9 @@ Graph::captype Args::graphCostBasic( uint_t * s, uint_t * t, vector< uint_t > of
   cb = abs( (*img_out)( xs, ys, 2 ) - (*img_in)( xsi, ysi, 2 ) )
     +  abs( (*img_out)( xt, yt, 2 ) - (*img_in)( xti, yti, 2 ) );
 
-  cost = (uint_t) ( ( cr + cv + cb ) / 3 );
+  cost = ( ( cr + cv + cb ) / 3 );
 
-  return (Graph::captype) cost / reduction;
+  return (Graph::captype) (cost / reduction);
 }
 
 
@@ -566,8 +566,8 @@ Graph::captype Args::graphCostGradi( uint_t * s, uint_t * t, vector< uint_t > of
     Matching cost function using gradient of the pixels.
     Each gradient is the mean of the gradients off each channel.
    */
-  uint_t gradTextR, gradTextV, gradTextB;
-  uint_t gradPatchR, gradPatchV, gradPatchB;
+  float gradTextR, gradTextV, gradTextB;
+  float gradPatchR, gradPatchV, gradPatchB;
   uint_t xs = s[0] % t_width;
   uint_t ys = s[1] % t_height;
   uint_t xt = t[0] % t_width;
@@ -586,12 +586,12 @@ Graph::captype Args::graphCostGradi( uint_t * s, uint_t * t, vector< uint_t > of
   gradPatchV  = abs( (*img_in)( xs, ys, 1 ) - (*img_in)( xt, yt, 1 ) );
   gradPatchB  = abs( (*img_in)( xs, ys, 2 ) - (*img_in)( xt, yt, 2 ) );
 
-  uint_t grad = (gradTextR + gradTextV + gradTextB) / 3 
+  float grad = (gradTextR + gradTextV + gradTextB) / 3 
     + ( gradPatchR + gradPatchV + gradPatchB ) / 3;
 
   grad++; /* to avoid zero division */
 
-  return (Graph::captype) ( graphCostBasic( s, t, offset, 1 ) / sqrt((float)grad) );
+  return (Graph::captype) ( graphCostBasic( s, t, offset, 1 ) / sqrt(grad) );
 }
 
 
@@ -628,7 +628,7 @@ Graph::captype Args::graphCostBasic( uchar_t s1r, uchar_t s1v, uchar_t s1b,
    
     The returned value is the mean on each channel (RVB).
   */
-  uint_t cr, cv, cb, cost;
+  float cr, cv, cb, cost;
 
   cr = abs( s1r - s2r ) +  abs( t1r - t2r );
   cv = abs( s1v - s2v ) +  abs( t1v - t2v );
@@ -636,7 +636,7 @@ Graph::captype Args::graphCostBasic( uchar_t s1r, uchar_t s1v, uchar_t s1b,
 
   cost = (uint_t) ( ( cr + cv + cb ) / 3 );
 
-  return (Graph::captype) cost / reduction;
+  return (Graph::captype) (cost / reduction);
 }
 
 
@@ -649,8 +649,8 @@ Graph::captype Args::graphCostGradi( uchar_t s1r, uchar_t s1v, uchar_t s1b,
     Matching cost function using gradient of the pixels.
     Each gradient is the mean of the gradients off each channel.
    */
-  uint_t gradTextR, gradTextV, gradTextB;
-  uint_t gradPatchR, gradPatchV, gradPatchB;
+  float gradTextR, gradTextV, gradTextB;
+  float gradPatchR, gradPatchV, gradPatchB;
 
   gradTextR  = abs( s1r - t1r );
   gradTextV  = abs( s1v - t1v );
@@ -660,11 +660,11 @@ Graph::captype Args::graphCostGradi( uchar_t s1r, uchar_t s1v, uchar_t s1b,
   gradPatchV  = abs( s2v - t2v );
   gradPatchB  = abs( s2b - t2b );
 
-  uint_t grad = (gradTextR + gradTextV + gradTextB) / 3 
+  float grad = (gradTextR + gradTextV + gradTextB) / 3 
     + ( gradPatchR + gradPatchV + gradPatchB ) / 3;
 
   grad++; /* to avoid zero division */
 
   return (Graph::captype) ( graphCostBasic( s1r, s1v, s1b, s2r, s2v, s2b,
-					    t1r, t1v, t1b, t2r, t2v, t2b, 1 ) / sqrt((float)grad) );
+					    t1r, t1v, t1b, t2r, t2v, t2b, 1 ) / sqrt(grad) );
 }

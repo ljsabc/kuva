@@ -35,9 +35,9 @@
 
 CC     = g++
 cC     = $(CC) -c
-CFLAG  = -Wall -O3 -ffast-math -fstrict-aliasing -malign-double -std=gnu++11
+CFLAG  = -Wall -O3 -std=gnu++11 -march=native
 # avoid warnings for B. & K. code
-GFLAG  = -O3 -ffast-math -fstrict-aliasing -malign-double -std=gnu++11
+GFLAG  = -O3 -std=gnu++11 -march=native
 LFLAG  = -lX11 -lm -lpthread
 DFLAG  = -g
 BIN    = kuva
