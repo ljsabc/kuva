@@ -45,9 +45,9 @@
 #define __GRAPH_H__
 
 #include "block.h"
-//#include <cstdint>
-#include <inttypes.h>
-
+#include <cstdint>
+//#include <inttypes.h>
+#include <cstddef>
 /*
 	Nodes, arcs and pointers to nodes are
 	added in blocks for memory and time efficiency.
@@ -164,11 +164,11 @@ private:
   } node;
 
   /* arc structures */
-#define NEIGHBOR_NODE(i, shift) ((node *) ((uintptr_t)(i) + (shift)))
-#define NEIGHBOR_NODE_REV(i, shift) ((node *) ((uintptr_t)(i) - (shift)))
+#define NEIGHBOR_NODE(i, shift) ((node *) ((char*)(i) + (shift)))
+#define NEIGHBOR_NODE_REV(i, shift) ((node *) ((char*)(i) - (shift)))
   typedef struct arc_forward_st
   {
-    uintptr_t shift;		/* node_to = NEIGHBOR_NODE(node_from, shift) */
+    ptrdiff_t shift;		/* node_to = NEIGHBOR_NODE(node_from, shift) */
     captype			r_cap;		/* residual capacity */
     captype			r_rev_cap;	/* residual capacity of the reverse arc*/
   } arc_forward;
