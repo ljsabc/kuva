@@ -1,10 +1,16 @@
-###Reproduce the output
+### Reproduce the output
 
     ./kuva ./75e2a678828db837cdfa0149eadb757b-flower-and-blossom-pattern.jpg -P2 -PNG -o output -v -ra 0.35 -re 5 -C 30
 
+### Sample
 
+#### Input
+![Image of Input](https://github.com/ljsabc/kuva/raw/master/75e2a678828db837cdfa0149eadb757b-flower-and-blossom-pattern.jpg)
+    
+#### Output
+![Image of output](https://github.com/ljsabc/kuva/raw/master/output.png)
 
-###Original README
+### Original README
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,7 +38,7 @@ generate a texture from a small sample image (the patch), introduced
 in the following article:
 
 @article{kwatra:2003:SIGGRAPH,
-    author = {Vivek Kwatra and Arno Schödl and Irfan Essa and Greg Turk and Aaron Bobick},
+    author = {Vivek Kwatra and Arno SchÃ¶dl and Irfan Essa and Greg Turk and Aaron Bobick},
     title = {Graphcut Textures: Image and Video Synthesis Using Graph Cuts},
     journal = {ACM Transactions on Graphics, SIGGRAPH 2003},
     year = {2003},
