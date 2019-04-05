@@ -1,3 +1,10 @@
+###Reproduce the output
+
+    ./kuva ./75e2a678828db837cdfa0149eadb757b-flower-and-blossom-pattern.jpg -P2 -PNG -o output -v -ra 0.35 -re 5 -C 30
+
+
+
+###Original README
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
