@@ -82,13 +82,13 @@ void Args::graphCreate( Graph * G, vector< uint_t > pos ) {
 	*/
 	if ( borderTexture( pos, i, j ) ) {
 
-	  G->set_tweights( nodes[k], 0, MAX_SHORT );
+	  G->set_tweights( nodes[k], 0, INT_MAX);
 	  sinks++;
 	}
 	/* else, if linked to SOURCE (close to an empty area) */
 	else if ( borderPatch( pos, i, j ) ) {
 
-	  G->set_tweights( nodes[k], MAX_SHORT, 0 );
+	  G->set_tweights( nodes[k], INT_MAX, 0 );
 	  sources++;
 	}
 	/* else, no connexion */
