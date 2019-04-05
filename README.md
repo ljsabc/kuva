@@ -1,14 +1,22 @@
 ### Reproduce the output
 
-    ./kuva ./75e2a678828db837cdfa0149eadb757b-flower-and-blossom-pattern.jpg -P2 -PNG -o output -v -ra 0.35 -re 5 -C 30
+    ./kuva ./blossom-pattern.jpg -P2 -PNG -o output -v -ra 0.35 -re 5 -C 30    # blossom image
+    ./kuva ./brick.jpg -P2 -PNG -o output -v -ra 0.2 -re 10 -C 15 # brick texture
+
 
 ### Sample
 
 #### Input
-![Image of Input](https://github.com/ljsabc/kuva/raw/master/75e2a678828db837cdfa0149eadb757b-flower-and-blossom-pattern.jpg)
+![Image of Input](https://github.com/ljsabc/kuva/raw/master/blossom-pattern.jpg)
     
 #### Output
 ![Image of output](https://github.com/ljsabc/kuva/raw/master/output.png)
+
+#### Input
+![Image of Input](https://github.com/ljsabc/kuva/raw/master/brick.jpg)
+    
+#### Output
+![Image of output](https://github.com/ljsabc/kuva/raw/master/output2.png)
 
 ### Original README
 
