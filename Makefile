@@ -35,16 +35,16 @@
 
 CC     = g++
 cC     = $(CC) -c
-CFLAG  = -Wall -O3 -ffast-math -fstrict-aliasing -malign-double
+CFLAG  = -Wall -O3 -ffast-math -fstrict-aliasing -malign-double -std=gnu++11
 # avoid warnings for B. & K. code
-GFLAG  = -O3 -ffast-math -fstrict-aliasing -malign-double
+GFLAG  = -O3 -ffast-math -fstrict-aliasing -malign-double -std=gnu++11
 LFLAG  = -lX11 -lm -lpthread
 DFLAG  = -g
 BIN    = kuva
 OPATH  = src
 VPATH  = src
 INSTALL_PATH = /usr/bin
-TRASH  = *~ *.bmp *.jpg *.png temp *.sha256  a.out $(BIN) $(VPATH)/*.o $(VPATH)/*~ 
+TRASH  = *~ temp *.sha256  a.out $(BIN) $(VPATH)/*.o $(VPATH)/*~ 
 
 all:		$(BIN)
 
