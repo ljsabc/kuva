@@ -1,7 +1,7 @@
 ### Reproduce the output
 
-    ./kuva ./blossom-pattern.jpg -P2 -PNG -o output -v -ra 0.35 -re 5 -C 30    # blossom image
-    ./kuva ./brick.jpg -P2 -PNG -o output -v -ra 0.2 -re 10 -C 15 # brick texture
+    ./kuva ./blossom-pattern.jpg -P2 -PNG -o output -v -ra 0.35 -re 5 -C 30    		# blossom image
+    ./kuva ./brick.jpg -P2 -PNG -o output -v -ra 0.2 -re 10 -C 15 			# brick texture
 
 
 ### Sample
