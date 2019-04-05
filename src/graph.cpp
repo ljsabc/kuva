@@ -115,10 +115,8 @@ void Graph::add_edge(node_id from, node_id to, captype cap, captype rev_cap)
 	a_for -> r_cap = cap;
 	a_for -> r_rev_cap = rev_cap;
 
-	((node *)from) -> first_out =
-		(arc_forward *) ((uintptr_t)(((node *)from) -> first_out) + 1);
-	((node *)to) -> first_in =
-		(arc_reverse *) ((uintptr_t)(((node *)to) -> first_in) + 1);
+	((node *)from) -> first_out = (arc_forward *) ((uintptr_t)(((node *)from) -> first_out) + 1);
+	((node *)to) -> first_in = (arc_reverse *) ((uintptr_t)(((node *)to) -> first_in) + 1);
 }
 
 void Graph::set_tweights(node_id i, captype cap_source, captype cap_sink)
@@ -157,7 +155,7 @@ void Graph::prepare_graph()
 	arc_reverse *a_rev, *a_rev_scan, a_rev_tmp;
 	node_block *nb;
 	bool for_flag = false, rev_flag = false;
-	int k;
+	uintptr_t k;
 
 	if (!arc_rev_block_first)
 	{
@@ -261,7 +259,7 @@ void Graph::prepare_graph()
 		arc_forward *af;
 		arc_reverse *ar;
 		node *from;
-		int shift = 0, shift_new;
+		uintptr_t shift = 0, shift_new;
 		captype r_cap, r_rev_cap, r_cap_new, r_rev_cap_new;
 
 		if (!(from=(node *)(a_rev->sister))) continue;
@@ -271,8 +269,7 @@ void Graph::prepare_graph()
 		do
 		{
 			ar -> sister = NULL;
-
-			shift_new = ((char *)(af->shift)) - (char *)from;
+            shift_new = ((char *)(af->shift)) - (char *)from;
 			r_cap_new = af -> r_cap;
 			r_rev_cap_new = af -> r_rev_cap;
 			if (shift)
@@ -305,7 +302,7 @@ void Graph::prepare_graph()
 		ab_for -> current -> shift     = a_for -> shift;
 		ab_for -> current -> r_cap     = a_for -> r_cap;
 		ab_for -> current -> r_rev_cap = a_for -> r_rev_cap;
-		a_for -> shift = (uintptr_t) (ab_for -> current + 1);
+		a_for -> shift = (uintptr_t) (ab_for -> current) + 1;
 		i -> first_out = (arc_forward *) (((char *)a_for) - 1);
 	}
 

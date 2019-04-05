@@ -69,9 +69,9 @@ public:
   /* Type of edge weights.
      Can be changed to char, int, float, double, ... */
 
-  typedef short captype;
+  typedef int captype;
   /* Type of total flow */
-  typedef unsigned flowtype;
+  typedef int flowtype;
 
   typedef void * node_id;
 
@@ -155,7 +155,7 @@ private:
     node_st			*next;		/* pointer to the next active node
 						   (or to itself if it is the last node in the list) */
 
-    int				TS;			/* timestamp showing when DIST was computed */
+    unsigned int    TS;			/* timestamp showing when DIST was computed */
     int				DIST;		/* distance to the terminal */
     short			is_sink;	/* flag showing whether the node is in the source or in the sink tree */
 
@@ -164,11 +164,11 @@ private:
   } node;
 
   /* arc structures */
-#define NEIGHBOR_NODE(i, shift) ((node *) ((char *)(i) + (shift)))
-#define NEIGHBOR_NODE_REV(i, shift) ((node *) ((char *)(i) - (shift)))
+#define NEIGHBOR_NODE(i, shift) ((node *) ((uintptr_t)(i) + (shift)))
+#define NEIGHBOR_NODE_REV(i, shift) ((node *) ((uintptr_t)(i) - (shift)))
   typedef struct arc_forward_st
   {
-    size_t shift;		/* node_to = NEIGHBOR_NODE(node_from, shift) */
+    uintptr_t shift;		/* node_to = NEIGHBOR_NODE(node_from, shift) */
     captype			r_cap;		/* residual capacity */
     captype			r_rev_cap;	/* residual capacity of the reverse arc*/
   } arc_forward;
